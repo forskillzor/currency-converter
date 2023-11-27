@@ -1,0 +1,1 @@
+C:\Users\skillzor\IdeaProjects\kotlin\currency-converter\build\classes\kotlin\main\MainKt$main$1.class;C:\Users\skillzor\IdeaProjects\kotlin\currency-converter\build\classes\kotlin\main\MainKt.class
