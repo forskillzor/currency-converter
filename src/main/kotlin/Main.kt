@@ -1,12 +1,31 @@
-import fuel.Fuel
-import fuel.get
-import kotlinx.coroutines.runBlocking
 
 fun main() {
-    println("Hello")
+    CurrencyQuotation().fetch()
 
-    runBlocking {
-        val response = Fuel.get("https://api.freecurrencyapi.com/v1/currencies?apikey=fca_live_XeB8rwGp3TC5PTHGcCaTdNsNSyW0fyBOzoB6cPOz").body
-        println(response)
+    val Converters = object {
+        fun get(currencyCode: String): CurrencyConverter {
+           when (currencyCode) {
+               "USD" -> return UsdConverter()
+               "EUR" -> return EurConverter()
+               "GBP" -> return GbpConverter()
+           }
+            return object : CurrencyConverter{
+                override val currencyCode: String = "XYZ"
+                override fun convertRub() {
+                    println("Нет такой валюты ${this.currencyCode}")
+                }
+            }
+        }
     }
+
+    val usdConverter = Converters.get("USD")
+    val eurConverter = Converters.get("EUR")
+    val gbpConverter = Converters.get("GBP")
+    val anotherConverter = Converters.get("another")
+
+    usdConverter.convertRub()
+    eurConverter.convertRub()
+    gbpConverter.convertRub()
+    anotherConverter.convertRub()
+
 }
