@@ -1,3 +1,5 @@
+package converters
+
 class GbpConverter: CurrencyConverter, CurrencyQuotation(){
     override val currencyCode: String = "GBP"
 

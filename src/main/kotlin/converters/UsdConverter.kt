@@ -1,3 +1,5 @@
+package converters
+
 class UsdConverter: CurrencyConverter, CurrencyQuotation(){
     override val currencyCode: String = "USD"
 
