@@ -11,8 +11,9 @@ fun main() {
            }
             return object : CurrencyConverter{
                 override val currencyCode: String = "XYZ"
-                override fun convertRub() {
+                override fun convertRub(rubs: Double):Double {
                     println("Нет такой валюты ${this.currencyCode}")
+                    return 0.0
                 }
             }
         }
@@ -23,9 +24,11 @@ fun main() {
     val gbpConverter = Converters.get("GBP")
     val anotherConverter = Converters.get("another")
 
-    usdConverter.convertRub()
-    eurConverter.convertRub()
-    gbpConverter.convertRub()
-    anotherConverter.convertRub()
+    val usd = usdConverter.convertRub(1.0)
+    val eur = eurConverter.convertRub(1.0)
+    val gbp = gbpConverter.convertRub(1.0)
+    val another = anotherConverter.convertRub(1.0)
+
+    println("1 рублей = $usd USD")
 
 }

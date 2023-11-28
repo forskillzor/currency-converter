@@ -1,7 +1,8 @@
-class GbpConverter: CurrencyConverter {
+class GbpConverter: CurrencyConverter, CurrencyQuotation(){
     override val currencyCode: String = "GBP"
 
-    override fun convertRub() {
-        println("Convert Rub to $currencyCode")
+    override fun convertRub(rubs: Double): Double? {
+        val value = getParitet(rubs, currencyCode)
+        return value
     }
 }

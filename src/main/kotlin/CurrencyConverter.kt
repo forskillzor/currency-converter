@@ -1,6 +1,4 @@
 interface CurrencyConverter {
     val currencyCode: String
-    fun convertRub() {
-        TODO("convert rubbles to another currency")
-    }
+    fun convertRub(rubs: Double): Double?
 }

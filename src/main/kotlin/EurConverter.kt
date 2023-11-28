@@ -1,7 +1,8 @@
-class EurConverter: CurrencyConverter {
+class EurConverter: CurrencyConverter, CurrencyQuotation() {
     override val currencyCode: String = "EUR"
 
-    override fun convertRub() {
-        println("Convert Rub to $currencyCode")
+    override fun convertRub(rubs: Double): Double? {
+        val value = getParitet(rubs, currencyCode)
+        return value
     }
 }
