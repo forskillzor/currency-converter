@@ -2,20 +2,17 @@ import fuel.Fuel
 import fuel.get
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
-import kotlin.math.round
 
 open class CurrencyQuotation {
     companion object {
         val quotation = mutableMapOf<String, Double>()
-        fun getQuotation(currency: String): Double?{
-            return quotation.get(currency)
+        val currencies = listOf("USD", "EUR", "GBP")
+        private fun getQuotation(currency: String): Double {
+            return quotation[currency] ?: 0.0
         }
-        fun getParitet(n: Double, currency: String): Double? {
+        fun getParity(n: Double, currency: String): Double {
             val quote = getQuotation(currency)
-            if (quote != null) {
-                return n * quote
-            }
-            return null
+            return n * quote
         }
     }
     fun fetch() {
@@ -25,18 +22,7 @@ open class CurrencyQuotation {
             println(response)
             val responseObj = JSONObject(response).getJSONObject("data")
 
-            val usdrub = getQuoteFromData(responseObj, "USD")
-            val eurrub = getQuoteFromData(responseObj, "EUR")
-            val gbprub = getQuoteFromData(responseObj, "GBP")
-
-            quotation.put("USD", usdrub)
-            quotation.put("EUR", eurrub)
-            quotation.put("GBP", gbprub)
+            currencies.forEach { currency -> quotation[currency] = responseObj.getDouble(currency) }
         }
-    }
-    private fun getQuoteFromData(data: JSONObject, currency: String): Double {
-        val usdrub = 1.0 / data.getDouble(currency)
-        return round(usdrub * 100) / 100
-
     }
 }
