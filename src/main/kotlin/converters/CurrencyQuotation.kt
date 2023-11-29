@@ -22,7 +22,6 @@ open class CurrencyQuotation {
             val response =
                 Fuel.get("https://api.freecurrencyapi.com/v1/latest?base_currency=RUB&apikey=fca_live_XeB8rwGp3TC5PTHGcCaTdNsNSyW0fyBOzoB6cPOz").body
             val responseObj = JSONObject(response).getJSONObject("data")
-
             currencies.forEach { currency -> quotation[currency] = responseObj.getDouble(currency) }
         }
     }
