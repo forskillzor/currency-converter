@@ -1,7 +1,0 @@
-C:\Users\Dangore\IdeaProjects\kotlin\github\src\main\kotlin\converters\GbpConverter.kt
-C:\Users\Dangore\IdeaProjects\kotlin\github\src\main\kotlin\converters\Converters.kt
-C:\Users\Dangore\IdeaProjects\kotlin\github\src\main\kotlin\converters\EurConverter.kt
-C:\Users\Dangore\IdeaProjects\kotlin\github\src\main\kotlin\converters\CurrencyConverter.kt
-C:\Users\Dangore\IdeaProjects\kotlin\github\src\main\kotlin\converters\UsdConverter.kt
-C:\Users\Dangore\IdeaProjects\kotlin\github\src\main\kotlin\Main.kt
-C:\Users\Dangore\IdeaProjects\kotlin\github\src\main\kotlin\converters\CurrencyQuotation.kt

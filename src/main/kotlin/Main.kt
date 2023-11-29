@@ -1,21 +1,20 @@
+import converters.CurrencyConverter
 import converters.getConverters
 import converters.CurrencyQuotation
 
 fun main() {
     CurrencyQuotation().fetch()
-    val converters = getConverters()
+    val convertersList = getConverters()
+    val currencies = listOf("USD", "EUR", "GBP", "XYZ")
+    val converters = mutableMapOf<String, CurrencyConverter>()
 
+    val rub = 5700.0
 
-    val usdConverter = converters.get("USD")
-    val eurConverter = converters.get("EUR")
-    val gbpConverter = converters.get("GBP")
-    val anotherConverter = converters.get("XYZ")
+    currencies.forEach{currency->
+        converters[currency] = convertersList.get(currency)
+    }
 
-    val usd = usdConverter.convertRub(100.0)
-    val eur = eurConverter.convertRub(1.0)
-    val gbp = gbpConverter.convertRub(1.0)
-    val another = anotherConverter.convertRub(1.0)
-
-    println("1 рублей = $usd USD")
-
+    currencies.forEach{currency ->
+        println("$rub рублей = ${converters[currency]?.convertRub(rub)} $currency")
+    }
 }
